@@ -1,5 +1,5 @@
 import {FC} from 'react';
-import SidebarMenu from "../modules/sidebar-menu/SidebarMenu.tsx";
+import SidebarMenu from "../modules/sidebar-menu/SidebarMenu";
 
 interface IRootProps {
 

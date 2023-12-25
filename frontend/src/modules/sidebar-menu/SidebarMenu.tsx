@@ -1,6 +1,6 @@
 import {FC} from 'react';
 import {Link} from "react-router-dom";
-import {ROUTES} from "../../routes/const.ts";
+import {ROUTES} from "../../routes/const";
 import {Menu, MenuItem, Sidebar, sidebarClasses, SubMenu} from "react-pro-sidebar";
 
 interface ISidebarMenuProps {
