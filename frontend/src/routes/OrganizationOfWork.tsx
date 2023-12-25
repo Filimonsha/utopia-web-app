@@ -1,14 +1,13 @@
+import {FC} from 'react';
 
 interface IOrganizationOfWorkProps {
 
 }
 
-const OrganizationOfWork = ({
-
-                            }) => {
+const OrganizationOfWork: FC<IOrganizationOfWorkProps> = ({}) => {
     return (
         <div>
-
+            AAAA
         </div>
     );
 };
