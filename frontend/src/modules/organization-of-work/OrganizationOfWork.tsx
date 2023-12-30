@@ -1,6 +1,7 @@
 import {FC} from 'react';
-import {Box} from "@mui/material";
+import {Box, Button, ButtonGroup, Stack} from "@mui/material";
 import ListOfPersons from "./components/list-of-persons";
+import styled from "styled-components";
 
 interface IOrganizationOfWorkProps {
 
@@ -14,11 +15,32 @@ const mockPersons = [{
     prevPosition:"string"
 }]
 
+const OrganizationOfWorkContainer = styled(Box)`
+    padding: 24px;
+`
+
+const OrganizationOfWorkContainerHeader = styled(Stack)`
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+`
+
 const OrganizationOfWork: FC<IOrganizationOfWorkProps> = ({}) => {
     return (
-        <Box>
+        <OrganizationOfWorkContainer>
+            <OrganizationOfWorkContainerHeader direction="row">
+                <Stack>
+                    items
+                </Stack>
+                <Stack>
+                    <ButtonGroup variant="contained">
+                        <Button>Attach to the family</Button>
+                        <Button>Attach to the institute</Button>
+                    </ButtonGroup>
+                </Stack>
+            </OrganizationOfWorkContainerHeader>
             <ListOfPersons persons={mockPersons} />
-        </Box>
+        </OrganizationOfWorkContainer>
     );
 };
 
