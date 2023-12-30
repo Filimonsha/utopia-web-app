@@ -1,13 +1,13 @@
-import {FC} from 'react';
-import {DataGrid, GridColDef} from "@mui/x-data-grid";
+import {FC, useEffect, useState} from 'react';
+import {DataGrid, GridColDef, GridRowSelectionModel} from "@mui/x-data-grid";
 
 interface IPerson {
-    id:number,
-    name:string,
-    motherland:string,
-    family:string,
-    position:string,
-    prevPosition:string
+    id: number,
+    name: string,
+    motherland: string,
+    family: string,
+    position: string,
+    prevPosition: string
 }
 
 interface IListOfPersonProps {
@@ -15,10 +15,14 @@ interface IListOfPersonProps {
 }
 
 const ListOfPersons: FC<IListOfPersonProps> = ({
-    persons
+                                                   persons
                                                }) => {
+    const [selectedPeople,setSelectedPeople] = useState<GridRowSelectionModel>([])
+    useEffect(() => {
+        console.log(selectedPeople)
+    }, [selectedPeople]);
     const columns: GridColDef[] = [
-        { field: 'id', headerName: 'ID', width: 90 },
+        {field: 'id', headerName: 'ID', width: 90},
         {
             field: 'name',
             headerName: 'Name',
@@ -50,8 +54,10 @@ const ListOfPersons: FC<IListOfPersonProps> = ({
             width: 160,
         },
     ];
+
     return (
-        <DataGrid columns={columns} rows={persons} />
+        <DataGrid columns={columns} rows={persons} checkboxSelection
+                  disableRowSelectionOnClick onRowSelectionModelChange={e => setSelectedPeople(e)}/>
     );
 };
 
