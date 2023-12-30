@@ -1,4 +1,4 @@
-package com.isbd.utopiawebapp.personmanagement.model;
+package com.isbd.utopiawebapp.craftmanagement.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,11 +8,11 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Person {
+public class CraftType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String name;
+    private String craftName;
 }
