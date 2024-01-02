@@ -1,4 +1,4 @@
-package com.isbd.utopiawebapp.countrymanagement.model;
+package com.isbd.utopiawebapp.familyandcraft.familymanagement.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,15 +6,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
-
-//TODO
 @Entity
 @Data
-public class Country {
+public class Family {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String name;
+//    TODO Artemi
+    private Integer craftTypeId;
+
+    private Integer responsiblePersonId;
 }

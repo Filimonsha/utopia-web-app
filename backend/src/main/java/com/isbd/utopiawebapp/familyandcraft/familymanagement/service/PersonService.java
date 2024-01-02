@@ -1,8 +1,8 @@
-package com.isbd.utopiawebapp.familymanagement.service;
+package com.isbd.utopiawebapp.familyandcraft.familymanagement.service;
 
-import com.isbd.utopiawebapp.familymanagement.dto.PersonsWithTheirMotherlandAndFamilyDTO;
-import com.isbd.utopiawebapp.familymanagement.model.Person;
-import com.isbd.utopiawebapp.familymanagement.repository.PersonRepository;
+import com.isbd.utopiawebapp.familyandcraft.familymanagement.model.Person;
+import com.isbd.utopiawebapp.familyandcraft.familymanagement.repository.PersonRepository;
+import com.isbd.utopiawebapp.familyandcraft.familymanagement.dto.PersonsWithTheirMotherlandAndFamilyDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,7 +20,9 @@ public class PersonService {
                 .name(person.getName())
                 .family("TODO family")
                 .motherland(person.getMotherland().getName())
-                .position("TODO position").build()
+                .position("TODO position")
+                .buildings(person.getBuildings())
+                .build()
         );
     }
 }

@@ -1,4 +1,4 @@
-package com.isbd.utopiawebapp.craftmanagement.model;
+package com.isbd.utopiawebapp.familyandcraft.craftmanagement.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

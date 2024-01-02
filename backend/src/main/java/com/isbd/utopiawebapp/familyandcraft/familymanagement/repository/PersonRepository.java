@@ -1,6 +1,6 @@
-package com.isbd.utopiawebapp.familymanagement.repository;
+package com.isbd.utopiawebapp.familyandcraft.familymanagement.repository;
 
-import com.isbd.utopiawebapp.familymanagement.model.Person;
+import com.isbd.utopiawebapp.familyandcraft.familymanagement.model.Person;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;

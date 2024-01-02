@@ -1,7 +1,7 @@
-package com.isbd.utopiawebapp.familymanagement.controller;
+package com.isbd.utopiawebapp.familyandcraft.familymanagement.controller;
 
-import com.isbd.utopiawebapp.familymanagement.dto.PersonsWithTheirMotherlandAndFamilyDTO;
-import com.isbd.utopiawebapp.familymanagement.service.PersonService;
+import com.isbd.utopiawebapp.familyandcraft.familymanagement.dto.PersonsWithTheirMotherlandAndFamilyDTO;
+import com.isbd.utopiawebapp.familyandcraft.familymanagement.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
