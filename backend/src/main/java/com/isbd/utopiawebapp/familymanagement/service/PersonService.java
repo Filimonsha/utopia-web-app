@@ -6,7 +6,6 @@ import com.isbd.utopiawebapp.familymanagement.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,8 +13,8 @@ public class PersonService {
     @Autowired
     private PersonRepository personRepository;
 
-    public Page<PersonsWithTheirMotherlandAndFamilyDTO> getPersonsWithTheirMotherlandAndFamily (Pageable pageable) {
-        Page<Person> originalPage = personRepository.findAll(pageable);
+    public Page<PersonsWithTheirMotherlandAndFamilyDTO> getPersonsWithTheirMotherlandAndFamily (int pageNumber,int pageSize) {
+        Page<Person> originalPage = personRepository.findAll(PageRequest.of(pageNumber,pageSize));
 
         return originalPage.map(person -> PersonsWithTheirMotherlandAndFamilyDTO.builder()
                 .name(person.getName())
