@@ -1,9 +1,7 @@
 package com.isbd.utopiawebapp.familyandcraft.familymanagement.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.isbd.utopiawebapp.familyandcraft.craftmanagement.model.CraftType;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -14,8 +12,9 @@ public class Family {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-//    TODO Artemi
-    private Integer craftTypeId;
+    @ManyToOne
+    private CraftType craftType;
 
     private Integer responsiblePersonId;
+
 }

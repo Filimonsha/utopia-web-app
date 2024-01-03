@@ -15,4 +15,7 @@ public class CraftType {
     private long id;
 
     private String craftName;
+
+//    @OneToOne
+//    private Family family;
 }
