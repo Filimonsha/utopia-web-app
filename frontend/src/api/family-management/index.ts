@@ -1,6 +1,6 @@
 import instance from "../axios";
-import {IHalResponse, PersonType} from "../types";
+import {IPerson} from "./types";
 
 export const getPersons = () =>
-    instance.get<IHalResponse<PersonType>>('/persons')
+    instance.get<{content:Array<IPerson>}>('/persons')
 

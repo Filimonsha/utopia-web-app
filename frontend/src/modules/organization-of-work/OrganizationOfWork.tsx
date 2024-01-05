@@ -6,14 +6,51 @@ import styled from "styled-components";
 interface IOrganizationOfWorkProps {
 
 }
-const mockPersons = [{
-    id: 1,
-    name:"string",
-    motherland:"string",
-    family:"string",
-    position:"string",
-    prevPosition:"string"
-}]
+const mockPersons = [    {
+    "name": "Sigizmund III",
+    "motherland": "Poland",
+    "family": "TODO family",
+    "position": "TODO position",
+    "buildings": [
+        {
+            "id": 4129,
+            "buildingType": {
+                "id": 61,
+                "typeName": "Living"
+            }
+        }
+    ]
+},
+    {
+        "name": "Petr I",
+        "motherland": "Finland",
+        "family": "TODO family",
+        "position": "TODO position",
+        "buildings": [
+            {
+                "id": 4129,
+                "buildingType": {
+                    "id": 61,
+                    "typeName": "Living"
+                }
+            }
+        ]
+    },
+    {
+        "name": "Victoria II",
+        "motherland": "Great Britain",
+        "family": "TODO family",
+        "position": "TODO position",
+        "buildings": [
+            {
+                "id": 4511,
+                "buildingType": {
+                    "id": 61,
+                    "typeName": "Living"
+                }
+            }
+        ]
+    },]
 
 const OrganizationOfWorkContainer = styled(Box)`
     padding: 24px;
@@ -39,7 +76,7 @@ const OrganizationOfWork: FC<IOrganizationOfWorkProps> = ({}) => {
                     </ButtonGroup>
                 </Stack>
             </OrganizationOfWorkContainerHeader>
-            <ListOfPersons persons={mockPersons} />
+            <ListOfPersons  />
         </OrganizationOfWorkContainer>
     );
 };
