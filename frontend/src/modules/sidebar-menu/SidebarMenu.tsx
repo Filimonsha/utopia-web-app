@@ -33,7 +33,7 @@ const SidebarMenu: FC<ISidebarMenuProps> = ({}) => {
         submenu: [{
             label: "Your families",
             component: (label: string) => <Link to={ROUTES.ORGANIZATION_OF_WORK}>{label}</Link>
-        },{
+        }, {
             label: "Current institutions",
             component: (label: string) => <Link to={ROUTES.ORGANIZATION_OF_WORK}>{label}</Link>
         },]
@@ -95,10 +95,12 @@ const SidebarMenu: FC<ISidebarMenuProps> = ({}) => {
                 <SidebarLogo/>
                 <Menu menuItemStyles={createMenuItemStyles()}>
                     {menuItems.map(item =>
-                        <SubMenu icon={<OrganizationOfWorkIcon/>}
-                                 label={item.label}
-                                 onOpenChange={handleSubMenuToggle}
-                                 open={isSubMenuOpen}
+                        <SubMenu
+                            key={item.label}
+                            icon={<OrganizationOfWorkIcon/>}
+                            label={item.label}
+                            onOpenChange={handleSubMenuToggle}
+                            open={isSubMenuOpen}
                         >
                             {
                                 item.submenu
