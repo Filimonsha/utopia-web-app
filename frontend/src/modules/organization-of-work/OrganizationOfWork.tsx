@@ -82,7 +82,7 @@ const OrganizationOfWork: FC<IOrganizationOfWorkProps> = ({}) => {
 
                         {families.map(family => <MenuItem key={family} value={family}>{family}</MenuItem>)}
                     </Select>
-                    <Button variant="contained" color="success" onClick={handleConfirmFamilyAttachment}>Confirm</Button>
+                    <Button disabled={!chosenFamily} variant="contained" color="success" onClick={handleConfirmFamilyAttachment}>Confirm</Button>
                 </>
             </CustomModal>
         </OrganizationOfWorkContainer>

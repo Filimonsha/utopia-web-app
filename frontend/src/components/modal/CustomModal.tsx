@@ -33,6 +33,7 @@ const CustomModal: FC<ICustomModalProps> = ({
         <Modal open={isOpen} onClose={handleCloseModal}>
             <ModalContainer>
                 <Stack alignItems="center">
+                    {/*TODO*/}
                     <Button>закрыть кнопка</Button>
                     {children}
                     <ModalAlert variant="filled" severity="error">Error: You are trying to change your family
