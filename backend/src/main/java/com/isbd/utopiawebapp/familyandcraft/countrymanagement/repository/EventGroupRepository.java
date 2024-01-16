@@ -9,7 +9,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import java.util.Set;
+
 @RepositoryRestResource
-public interface EventGroupRepository extends  CrudRepository<EventGroup,Long> { //PagingAndSortingRepository<EventGroup,Long>,
-//    Page<EventGroup> findAll(Specification<EventGroup> specification, Pageable pageable);
+public interface EventGroupRepository extends PagingAndSortingRepository<EventGroup,Long>, CrudRepository<EventGroup,Long> {
+    Set<EventGroup> findEventGroupByGroupCountriesId(long eventGroupId);
+    Set<EventGroup> findEventGroupByCountryRelationshipEventHistoriesId(long countryRelationshipEventId);
 }

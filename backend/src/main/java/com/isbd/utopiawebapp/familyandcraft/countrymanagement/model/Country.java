@@ -4,6 +4,8 @@ import com.isbd.utopiawebapp.familyandcraft.familymanagement.model.Person;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Set;
+
 
 //TODO
 @Entity
@@ -16,8 +18,7 @@ public class Country {
 
     private String name;
 
-    @OneToOne()
-    @JoinColumn(name = "leader_id", referencedColumnName = "id")
-    private Person leader;
+    @ManyToMany(mappedBy = "groupCountries")
+    private Set<EventGroup> eventGroupSet;
 
 }

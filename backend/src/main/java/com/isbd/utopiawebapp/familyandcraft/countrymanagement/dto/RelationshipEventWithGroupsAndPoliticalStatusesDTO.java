@@ -15,5 +15,5 @@ public class RelationshipEventWithGroupsAndPoliticalStatusesDTO {
     private PoliticalStatus politicalStatus;
     private Date startEventDate;
     private Date endEventDate;
-    private Set<EventGroup> eventGroups;
+    private Set<EventGroupsWithCountriesDTO> eventGroups;
 }

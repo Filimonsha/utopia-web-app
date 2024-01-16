@@ -21,4 +21,7 @@ public class EventGroup {
             inverseJoinColumns = @JoinColumn(name = "country_id")
     )
     private Set<Country> groupCountries;
+
+    @ManyToMany(mappedBy = "eventGroups")
+    private Set<CountryRelationshipEventHistory> countryRelationshipEventHistories;
 }

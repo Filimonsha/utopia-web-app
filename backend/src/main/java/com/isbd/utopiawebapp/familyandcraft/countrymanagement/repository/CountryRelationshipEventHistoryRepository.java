@@ -16,7 +16,9 @@ import java.util.Set;
 
 @RepositoryRestResource
 public interface CountryRelationshipEventHistoryRepository extends PagingAndSortingRepository<CountryRelationshipEventHistory,Long>, CrudRepository<CountryRelationshipEventHistory,Long> {
-    Page<CountryRelationshipEventHistory> findAll(Specification<CountryRelationshipEventHistory> specification, Pageable pageable);
+    Page<CountryRelationshipEventHistory> findAll(Pageable pageable);
     Page<CountryRelationshipEventHistory> findAllByPoliticalStatusNameEquals(String politicalStatusName, Pageable pageable);
+    Set<CountryRelationshipEventHistory> findCountryRelationshipEventHistoriesByEventGroupsId(long eventGroupId);
+    Set<CountryRelationshipEventHistory> findCountryRelationshipEventHistoryByPoliticalStatusId(long politicalStatusId);
 }
 
