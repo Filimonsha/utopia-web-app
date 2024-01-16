@@ -13,51 +13,6 @@ interface IOrganizationOfWorkProps {
 
 }
 
-const mockPersons = [{
-    "name": "Sigizmund III",
-    "motherland": "Poland",
-    "family": "TODO family",
-    "position": "TODO position",
-    "buildings": [
-        {
-            "id": 4129,
-            "buildingType": {
-                "id": 61,
-                "typeName": "Living"
-            }
-        }
-    ]
-},
-    {
-        "name": "Petr I",
-        "motherland": "Finland",
-        "family": "TODO family",
-        "position": "TODO position",
-        "buildings": [
-            {
-                "id": 4129,
-                "buildingType": {
-                    "id": 61,
-                    "typeName": "Living"
-                }
-            }
-        ]
-    },
-    {
-        "name": "Victoria II",
-        "motherland": "Great Britain",
-        "family": "TODO family",
-        "position": "TODO position",
-        "buildings": [
-            {
-                "id": 4511,
-                "buildingType": {
-                    "id": 61,
-                    "typeName": "Living"
-                }
-            }
-        ]
-    },]
 
 const OrganizationOfWorkContainer = styled(Box)`
     padding: 24px;
@@ -86,8 +41,6 @@ const OrganizationOfWork: FC<IOrganizationOfWorkProps> = ({}) => {
                     : undefined
             )
         }
-
-        console.log(!chosenFamily)
     }, [selectedPerson]);
 
     function handleChoseFamily(e: SelectChangeEvent<string>) {
@@ -96,7 +49,6 @@ const OrganizationOfWork: FC<IOrganizationOfWorkProps> = ({}) => {
 
     function handleConfirmFamilyAttachment() {
         if (chosenFamily && selectedPerson) {
-            console.log(selectedPerson?.id, "as")
             changeFamilyMember(selectedPerson.id)
         }
     }
