@@ -1,9 +1,7 @@
 package com.isbd.utopiawebapp.familyandcraft.countrymanagement.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.isbd.utopiawebapp.familyandcraft.familymanagement.model.Person;
+import jakarta.persistence.*;
 import lombok.Data;
 
 
@@ -17,4 +15,9 @@ public class Country {
     private long id;
 
     private String name;
+
+    @OneToOne()
+    @JoinColumn(name = "leader_id", referencedColumnName = "id")
+    private Person leader;
+
 }
