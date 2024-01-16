@@ -24,12 +24,12 @@ public class PersonService {
     private PersonPositionHistoryRepository personPositionHistoryRepository;
 
     public Page<PersonsWithTheirMotherlandAndFamilyDTO> getPersonsWithTheirMotherlandAndFamily(int pageNumber, int pageSize) {
-        Specification<Person> specification = Specification.where(
-                PersonFieldsSpecification
-                        .setFieldSizeGreaterThan(0)
-                        .and(PersonFieldsSpecification.isFamilyNotNull())
-        );
-        Page<Person> originalPage = personRepository.findAll(specification,PageRequest.of(pageNumber, pageSize));
+//        Specification<Person> specification = Specification.where(
+//                PersonFieldsSpecification
+//                        .setFieldSizeGreaterThan(0)
+//                        .and(PersonFieldsSpecification.isFamilyNotNull())
+//        );
+        Page<Person> originalPage = personRepository.findAll(PageRequest.of(pageNumber, pageSize));
 
         return originalPage
                 .map(person -> {
