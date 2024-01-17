@@ -13,6 +13,4 @@ public class PoliticalStatus {
     private long id;
     private String name;
 
-    @OneToMany(mappedBy = "politicalStatus")
-    private Set<CountryRelationshipEventHistory> countryRelationshipEventHistory;
 }

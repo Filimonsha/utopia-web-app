@@ -1,6 +1,7 @@
 package com.isbd.utopiawebapp.familyandcraft.countrymanagement.service;
 
 import com.isbd.utopiawebapp.familyandcraft.countrymanagement.dto.CountryDTO;
+import com.isbd.utopiawebapp.familyandcraft.countrymanagement.dto.CountryRelationshipEventHistoryRequest;
 import com.isbd.utopiawebapp.familyandcraft.countrymanagement.dto.EventGroupsWithCountriesDTO;
 import com.isbd.utopiawebapp.familyandcraft.countrymanagement.dto.RelationshipEventWithGroupsAndPoliticalStatusesDTO;
 import com.isbd.utopiawebapp.familyandcraft.countrymanagement.model.Country;
@@ -16,6 +17,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -30,25 +32,29 @@ public class RelationshipEventService {
     @Autowired
     private CountryRelationshipEventHistoryRepository countryRelationshipEventHistoryRepository;
 
+    public void addRelationshipEvents(CountryRelationshipEventHistoryRequest countryRelationshipEventHistoryRequest) {
+        countryRelationshipEventHistoryRepository.addCountryRelationshipEvent(countryRelationshipEventHistoryRequest.politicalStatusName(),
+                countryRelationshipEventHistoryRequest.eventStartDate(), countryRelationshipEventHistoryRequest.eventGroupsId());
+//        CountryRelationshipEventHistory event = countryRelationshipEventHistoryRepository.findCountryRelationshipEventHistoryById(eventId.get());
+//        return convertEventToEventDto(event);
+    }
+
     public Page<RelationshipEventWithGroupsAndPoliticalStatusesDTO> getRelationshipEventsWithGroupsAndPoliticalStatuses(int pageNumber, int pageSize) {
-//        Specification<CountryRelationshipEventHistory> specification = Specification.where(
-//                CountryRelationshipEventHistorySpecification
-//                        .isEventStartToday()
-//        );
         Page<CountryRelationshipEventHistory> originalPage = countryRelationshipEventHistoryRepository.findAll(PageRequest.of(pageNumber, pageSize));
 
-        return originalPage.map(relationshipEvent -> {
-            Set<EventGroup> eventGroups = eventGroupRepository.findEventGroupByCountryRelationshipEventHistoriesId(relationshipEvent.getId());
-            Set<EventGroupsWithCountriesDTO> eventGroupsWithCountries = getEventGroupsWithCountries(eventGroups);
+        return originalPage.map(this::convertEventToEventDto);
+    }
 
-            return RelationshipEventWithGroupsAndPoliticalStatusesDTO.builder()
-                    .id(relationshipEvent.getId())
-                    .politicalStatus(relationshipEvent.getPoliticalStatus())
-                    .startEventDate(relationshipEvent.getStartEventDate())
-                    .endEventDate(relationshipEvent.getEndEventDate())
-                    .eventGroups(eventGroupsWithCountries)
-                    .build();
-        });
+    protected RelationshipEventWithGroupsAndPoliticalStatusesDTO convertEventToEventDto(CountryRelationshipEventHistory event) {
+        Set<EventGroup> eventGroups = eventGroupRepository.findEventGroupByCountryRelationshipEventHistoriesId(event.getId());
+        Set<EventGroupsWithCountriesDTO> eventGroupsWithCountries = getEventGroupsWithCountries(eventGroups);
+        return RelationshipEventWithGroupsAndPoliticalStatusesDTO.builder()
+                .id(event.getId())
+                .politicalStatus(event.getPoliticalStatus())
+                .startEventDate(event.getStartEventDate())
+                .endEventDate(event.getEndEventDate())
+                .eventGroups(eventGroupsWithCountries)
+                .build();
     }
 
     public Set<EventGroupsWithCountriesDTO> getEventGroupsWithCountries(Set<EventGroup> eventGroup) {

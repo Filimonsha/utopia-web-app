@@ -12,10 +12,8 @@ public class CountryRelationshipEventHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
     @ManyToOne
     private PoliticalStatus politicalStatus;
-
     private Date startEventDate;
     private Date endEventDate;
 
