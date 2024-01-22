@@ -37,6 +37,15 @@ const SidebarMenu: FC<ISidebarMenuProps> = ({}) => {
             label: "Current institutions",
             component: (label: string) => <Link to={ROUTES.ORGANIZATION_OF_WORK}>{label}</Link>
         },]
+    }, {
+        label: "Political management",
+        submenu: [{
+            label: "Notifications",
+            component: (label: string) => <Link to={ROUTES.POLITICAL_MANAGEMENT}>{label}</Link>
+        }, {
+            label: "Changes",
+            component: (label: string) => <Link to={ROUTES.POLITICAL_MANAGEMENT}>{label}</Link>
+        }]
     }]
     //
     // display: block;

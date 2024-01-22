@@ -55,9 +55,9 @@ export interface IPosition {
 }
 export interface IBuilding {
     id: number;
-    buildingType: BuildingType;
+    buildingType: IBuildingType;
 }
-export interface BuildingType {
+export interface IBuildingType {
     id: number;
     typeName: string;
 }
