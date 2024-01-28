@@ -1,5 +1,6 @@
-export enum ROUTES {
-    ROOT = "/",
-    ORGANIZATION_OF_WORK = "organization-of-work",
-    POLITICAL_MANAGEMENT = "political-management",
-}
+
+export const ROOT = "/"
+export const ORGANIZATION_OF_WORK = "organization-of-work"
+
+export const FAMILY_ATTACHMENT = `${ORGANIZATION_OF_WORK}/attachment`
+export const INSTITUTES = `${ORGANIZATION_OF_WORK}/institutes`

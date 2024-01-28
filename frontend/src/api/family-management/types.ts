@@ -13,7 +13,7 @@ export interface IHalResponse<T> {
     };
 }
 
-export interface PersonType {
+export interface IPersonHAL {
     "name": string,
     "links": {
         "person": {
@@ -28,6 +28,25 @@ export interface PersonType {
     }
 }
 
+export interface IFamilyHAL {
+    "responsiblePersonId": number,
+    "_links": {
+        "self": {
+            "href": string
+        },
+        "family": {
+            "href": string
+        },
+        "craftType": {
+            "href": string
+        }
+    }
+}
+
+export interface IFamiliesHAL {
+    "families": Array<IFamilyHAL>
+}
+
 
 export interface IPerson {
     id: number;
@@ -38,25 +57,30 @@ export interface IPerson {
     prevPosition: IPosition;
     buildings?: (IBuilding)[] | null;
 }
+
 export interface IFamily {
     id: number;
     craftType: ICraftTypeOrCraftTypeEntity;
     responsiblePersonId: number;
 }
+
 export interface ICraftTypeOrCraftTypeEntity {
     id: number;
     craftName: string;
 }
+
 export interface IPosition {
     id: number;
     name: string;
     personPositionHistory?: (null)[] | null;
     craftType?: (ICraftTypeOrCraftTypeEntity)[] | null;
 }
+
 export interface IBuilding {
     id: number;
     buildingType: IBuildingType;
 }
+
 export interface IBuildingType {
     id: number;
     typeName: string;
