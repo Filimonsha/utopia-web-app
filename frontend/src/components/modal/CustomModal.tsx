@@ -34,10 +34,10 @@ const CustomModal: FC<ICustomModalProps> = ({
             <ModalContainer>
                 <Stack alignItems="center">
                     {/*TODO*/}
-                    <Button>закрыть кнопка</Button>
+                    <Button>Закрыть</Button>
                     {children}
-                    <ModalAlert variant="filled" severity="error">Error: You are trying to change your family
-                        incorrectly</ModalAlert>
+                    {/*<ModalAlert variant="filled" severity="error">Error: You are trying to change your family*/}
+                    {/*    incorrectly</ModalAlert>*/}
                 </Stack>
             </ModalContainer>
         </Modal>

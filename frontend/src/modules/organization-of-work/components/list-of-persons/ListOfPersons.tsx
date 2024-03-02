@@ -24,7 +24,7 @@ const columns: GridColDef[] = [
         field: 'family',
         valueGetter: (params) => {
             const family: IFamily = params.row.family;
-            return family && (family.id + family.craftType.craftName)
+            return family ? (family.id + family.craftType.craftName) : "no family"
         },
         type: 'number',
         width: 110,

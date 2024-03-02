@@ -19,3 +19,5 @@ export const patchPerson = (personId: number, data: Partial<StringifyFields<IPer
 export const getFamilies = () =>
     instance.get<IHalResponse<IFamiliesHAL>>(FAMILIES_ROUTE)
         .then(res => res.data._embedded)
+
+export const changePersonFamily = (personId: number, familyId: string) => instance.post(`changeFamily?personId=${personId}&familyId=${familyId}`)

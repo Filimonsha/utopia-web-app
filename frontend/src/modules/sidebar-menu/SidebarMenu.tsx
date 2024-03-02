@@ -33,9 +33,6 @@ const SidebarMenu: FC<ISidebarMenuProps> = ({}) => {
         submenu: [{
             label: "Your families",
             component: (label: string) => <Link to={FAMILY_ATTACHMENT}>{label}</Link>
-        }, {
-            label: "Current institutions",
-            component: (label: string) => <Link to={INSTITUTES}>{label}</Link>
         },]
     }]
     const createMenuItemStyles = (): MenuItemStyles => ({
@@ -43,7 +40,7 @@ const SidebarMenu: FC<ISidebarMenuProps> = ({}) => {
             fontSize: '13px',
             fontWeight: 400,
             borderRadius: "10px",
-            backgroundColor: isSubMenuOpen ? "#7364FF" : "white",
+            backgroundColor: "white",
         },
         SubMenuExpandIcon: {
             color: '#b6b7b9',
@@ -56,7 +53,7 @@ const SidebarMenu: FC<ISidebarMenuProps> = ({}) => {
             // } : {}),
             // border: "20px solid white",
             // borderTop: "none",
-            backgroundColor: isSubMenuOpen ? "#7364FF" : "white",
+            backgroundColor: "white",
         }),
         button: {
             [`&.${menuClasses.disabled}`]: {

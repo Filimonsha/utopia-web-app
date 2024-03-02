@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
-import {getFamilies, patchPerson} from "../../../../api/family-management";
+import {changePersonFamily, getFamilies, patchPerson} from "../../../../api/family-management";
+import {checkServerIdentity} from "node:tls";
 
 export const useControlFamilies = () => {
     const [families, setFamilies] = useState<Array<string>>([])
@@ -12,9 +13,11 @@ export const useControlFamilies = () => {
         getFamilies()
             .then(families => setFamilies(families.families.map(family => family._links.self.href)))
     const changeFamilyMember = (memberId: number,) => {
-        patchPerson(memberId, {
-            family: chosenFamily
-        })
+        if (chosenFamily) {
+            const str = chosenFamily.split("/")
+            console.log(str)
+            changePersonFamily(memberId, str[str.length - 1])
+        }
     }
     return {families, chosenFamily, setChosenFamily, changeFamilyMember}
 }
