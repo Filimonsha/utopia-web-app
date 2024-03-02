@@ -1,29 +1,25 @@
-export interface IHalResponse<T> {
-    _embedded: T;
-    _links: {
-        [key: string]: {
-            href: string;
-        };
-    };
-    page: {
-        size: number;
-        totalElements: number;
-        totalPages: number;
-        number: number;
-    };
+export interface IPage {
+    pageable: IPageable;
+    last: boolean;
+    totalPages: number;
+    totalElements: number;
+    first: boolean;
+    size: number;
+    number: number;
+    sort: ISort;
+    numberOfElements: number;
+    empty: boolean;
 }
-
-export interface PersonType {
-    "name": string,
-    "links": {
-        "person": {
-            "href": string
-        },
-        "motherland": {
-            "href": string
-        },
-        "family": {
-            "href": string
-        }
-    }
+export interface IPageable {
+    pageNumber: number;
+    pageSize: number;
+    sort: ISort;
+    offset: number;
+    paged: boolean;
+    unpaged: boolean;
+}
+export interface ISort {
+    empty: boolean;
+    sorted: boolean;
+    unsorted: boolean;
 }

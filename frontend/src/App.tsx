@@ -1,16 +1,16 @@
 import {HashRouter, Route, Routes} from "react-router-dom";
 import Root from "./routes/Root";
-import {ROUTES} from "./routes/const";
 import OrganizationOfWorkRoot from "./routes/OrganizationOfWorkRoot";
 import Layout from "./Layout";
 import "./index.css"
+import {FAMILY_ATTACHMENT, ROOT} from "./routes/const";
 
 const App = () => {
     const routes = [{
-        path: ROUTES.ROOT,
+        path: ROOT,
         element: <Root/>
     }, {
-        path: ROUTES.ORGANIZATION_OF_WORK,
+        path: FAMILY_ATTACHMENT,
         element: <OrganizationOfWorkRoot/>
     }]
     return (
