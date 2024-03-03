@@ -15,6 +15,7 @@ public class SpringDataRestConfig
             RepositoryRestConfiguration config, CorsRegistry cors) {
 
         cors.addMapping("/*")
-                .allowedOrigins("*");
+                .allowedOrigins("*")
+                .allowedMethods("*");
     }
 }

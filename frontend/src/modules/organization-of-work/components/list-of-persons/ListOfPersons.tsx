@@ -1,10 +1,11 @@
-import {FC, useEffect, useState} from 'react';
+import {Dispatch, FC, useEffect, useState} from 'react';
 import {DataGrid, GridColDef, GridRowSelectionModel} from "@mui/x-data-grid";
 import {usePrepareListOfPersons} from "./hooks/usePrepareListOfPersons";
 import {IBuilding, IFamily, IPerson, IPosition} from "../../../../api/family-management/types";
 
 
 interface IListOfPersonProps {
+    setSelectedPerson: Dispatch<IPerson | undefined>
 }
 
 const columns: GridColDef[] = [
@@ -23,7 +24,7 @@ const columns: GridColDef[] = [
         field: 'family',
         valueGetter: (params) => {
             const family: IFamily = params.row.family;
-            return family && (family.id + family.craftType.craftName)
+            return family ? (family.id + family.craftType.craftName) : "no family"
         },
         type: 'number',
         width: 110,
@@ -33,7 +34,9 @@ const columns: GridColDef[] = [
         headerName: 'Position',
         valueGetter: (params) => {
             const position: IPosition = params.row.position;
-            return position?.craftType && (position.id + position.craftType[0].craftName)
+            return position?.craftType && position?.craftType.length > 0 ?
+                (position.id + position.craftType[0].craftName)
+                : "no current position"
         },
         sortable: false,
         width: 160,
@@ -44,7 +47,9 @@ const columns: GridColDef[] = [
         description: 'This column has a value getter and is not sortable.',
         valueGetter: (params) => {
             const position: IPosition = params.row.position;
-            return position?.craftType && (`${position.id}  ${position.craftType[0].craftName}`)
+            return position?.craftType && position?.craftType.length > 0 ?
+                (`${position.id}  ${position.craftType[0].craftName}`)
+                : "no previous position"
         },
         sortable: false,
         width: 160,
@@ -62,9 +67,8 @@ const columns: GridColDef[] = [
 
 
 const ListOfPersons: FC<IListOfPersonProps> = ({
-                                                   // persons
+                                                   setSelectedPerson
                                                }) => {
-    const [selectedPeople, setSelectedPeople] = useState<GridRowSelectionModel>([])
     const [paginationModel, setPaginationModel] = useState({
         pageSize: 10,
         page: 0,
@@ -72,11 +76,19 @@ const ListOfPersons: FC<IListOfPersonProps> = ({
 
     const {isLoading, rows, rowCountState} = usePrepareListOfPersons(paginationModel)
 
+
+    function handleSelectPerson(e: GridRowSelectionModel) {
+        setSelectedPerson(rows.find(row => row.id === e[0]))
+    }
+
     return (
         <DataGrid columns={columns}
                   rows={rows}
-                  checkboxSelection
-                  disableRowSelectionOnClick onRowSelectionModelChange={e => setSelectedPeople(e)}
+            // isRowSelectable={() => selectedPerson.length === 0}
+            // checkboxSelection
+            // disableRowSelectionOnClick
+
+                  onRowSelectionModelChange={handleSelectPerson}
                   paginationModel={paginationModel}
                   rowCount={rowCountState}
                   paginationMode="server"
