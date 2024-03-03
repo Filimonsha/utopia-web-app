@@ -20,8 +20,8 @@ public class CountryRelationshipEventHistory {
     @ManyToMany
     @JoinTable(
             name = "event_groups",
-            joinColumns = @JoinColumn(name = "event_group_id"),
-            inverseJoinColumns = @JoinColumn(name = "id")
+            joinColumns = @JoinColumn(name = "id"),
+            inverseJoinColumns = @JoinColumn(name = "event_group_id")
     )
     private Set<EventGroup> eventGroups;
 
