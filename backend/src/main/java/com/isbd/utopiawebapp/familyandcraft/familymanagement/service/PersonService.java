@@ -3,14 +3,14 @@ package com.isbd.utopiawebapp.familyandcraft.familymanagement.service;
 import com.isbd.utopiawebapp.familyandcraft.craftmanagement.model.PersonPositionHistory;
 import com.isbd.utopiawebapp.familyandcraft.craftmanagement.repository.PersonPositionHistoryRepository;
 import com.isbd.utopiawebapp.familyandcraft.familymanagement.dto.PersonsWithTheirMotherlandAndFamilyDTO;
+import com.isbd.utopiawebapp.familyandcraft.familymanagement.model.Family;
 import com.isbd.utopiawebapp.familyandcraft.familymanagement.model.Person;
+import com.isbd.utopiawebapp.familyandcraft.familymanagement.repository.FamilyRepository;
 import com.isbd.utopiawebapp.familyandcraft.familymanagement.repository.PersonRepository;
-import com.isbd.utopiawebapp.familyandcraft.familymanagement.utils.PersonFieldsSpecification;
 import com.isbd.utopiawebapp.familyandcraft.familymanagement.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -23,6 +23,18 @@ public class PersonService {
     @Autowired
     private PersonPositionHistoryRepository personPositionHistoryRepository;
 
+    @Autowired
+    private FamilyRepository familyRepository;
+
+
+    public Family changePersonFamily(Long personId, Long familyId) {
+        Person person = personRepository.findById(personId).orElseThrow();
+        person.setFamily(familyRepository.findById(familyId).orElseThrow());
+        personRepository.save(person);
+
+        return personRepository.findById(personId).orElseThrow().getFamily();
+    }
+
     public Page<PersonsWithTheirMotherlandAndFamilyDTO> getPersonsWithTheirMotherlandAndFamily(int pageNumber, int pageSize) {
 //        Specification<Person> specification = Specification.where(
 //                PersonFieldsSpecification
@@ -33,22 +45,22 @@ public class PersonService {
 
         return originalPage
                 .map(person -> {
-                    Set<PersonPositionHistory> personPositionHistory = personPositionHistoryRepository.findAllByPersonId(person.getId());
+                            Set<PersonPositionHistory> personPositionHistory = personPositionHistoryRepository.findAllByPersonId(person.getId());
 
-                    return PersonsWithTheirMotherlandAndFamilyDTO.builder()
-                            .id(person.getId())
-                            .name(person.getName())
-                            .family(person.getFamily())
-                            .motherland(person.getMotherland().getName())
-                            .position(
-                                    Utils.findPersonCurrentPosition(personPositionHistory)
-                            )
-                            .prevPosition(
-                                    Utils.findPersonPrevPosition(personPositionHistory)
-                            )
-                            .buildings(person.getBuildings())
-                            .build();
-                }
-        );
+                            return PersonsWithTheirMotherlandAndFamilyDTO.builder()
+                                    .id(person.getId())
+                                    .name(person.getName())
+                                    .family(person.getFamily())
+                                    .motherland(person.getMotherland().getName())
+                                    .position(
+                                            Utils.findPersonCurrentPosition(personPositionHistory)
+                                    )
+                                    .prevPosition(
+                                            Utils.findPersonPrevPosition(personPositionHistory)
+                                    )
+                                    .buildings(person.getBuildings())
+                                    .build();
+                        }
+                );
     }
 }
