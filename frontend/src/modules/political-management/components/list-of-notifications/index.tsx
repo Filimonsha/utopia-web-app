@@ -1,0 +1,3 @@
+import ListOfCountryRelationshipEvents from "./ListOfCountryRelationshipEvents";
+
+export default ListOfCountryRelationshipEvents
