@@ -41,6 +41,7 @@ public class PersonService {
 //                        .setFieldSizeGreaterThan(0)
 //                        .and(PersonFieldsSpecification.isFamilyNotNull())
 //        );
+
         Page<Person> originalPage = personRepository.findAll(PageRequest.of(pageNumber, pageSize));
 
         return originalPage
