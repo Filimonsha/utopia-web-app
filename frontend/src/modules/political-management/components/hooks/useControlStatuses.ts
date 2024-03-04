@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {getStatuses} from "../../../../api/political_management";
+import {getStatuses} from "../../../../api/political-management";
 
 
 export const useControlStatuses = () => {

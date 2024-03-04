@@ -61,9 +61,9 @@ const OrganizationOfWork: FC<IOrganizationOfWorkProps> = ({}) => {
                 </Stack>
                 <Stack>
                     <ButtonGroup variant="contained">
-                        {/*<Button disabled={!selectedPerson} onClick={handleClickOnFamilyAttachBtn}>Attach to*/}
-                        {/*    the family</Button>*/}
-                        <Button disabled={!selectedPerson}>Attach to the institute</Button>
+                        <Button disabled={!selectedPerson} onClick={handleClickOnFamilyAttachBtn}>Attach to
+                            the family</Button>
+                        {/*<Button disabled={!selectedPerson}>Attach to the institute</Button>*/}
                     </ButtonGroup>
                 </Stack>
             </OrganizationOfWorkContainerHeader>

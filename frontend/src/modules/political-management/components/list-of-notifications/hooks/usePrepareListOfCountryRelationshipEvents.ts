@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {ICountryRelationshipEvent} from "../../../../../api/political_management/types";
+import {ICountryRelationshipEvent} from "../../../../../api/political-management/types";
 import {IPage} from "../../../../../api/types";
 import instance from "../../../../../api/axios";
 import {GridPaginationModel} from "@mui/x-data-grid";

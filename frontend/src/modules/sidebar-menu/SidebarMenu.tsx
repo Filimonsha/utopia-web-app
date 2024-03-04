@@ -1,6 +1,6 @@
 import {FC, useState} from 'react';
 import {Link} from "react-router-dom";
-import {FAMILY_ATTACHMENT, INSTITUTES, SITUATION_MONITORING} from "../../routes/const";
+import {FAMILY_ATTACHMENT, INSTITUTES, REPORTS, SITUATION_MONITORING} from "../../routes/const";
 import {Menu, menuClasses, MenuItem, MenuItemStyles, Sidebar, sidebarClasses, SubMenu} from "react-pro-sidebar";
 import {Box, Stack, Typography} from "@mui/material";
 import OrganizationOfWorkIcon from "../../icons/OrganizationOfWorkIcon";
@@ -34,13 +34,19 @@ const SidebarMenu: FC<ISidebarMenuProps> = ({}) => {
             label: "Your families",
             component: (label: string) => <Link to={FAMILY_ATTACHMENT}>{label}</Link>
         }]
-        }, {
-            label: "Political management",
-            submenu: [{
-                label: "Situation monitoring",
-                component: (label: string) => <Link to={SITUATION_MONITORING}>{label}</Link>
-            }]
-        }
+    }, {
+        label: "Political management",
+        submenu: [{
+            label: "Situation monitoring",
+            component: (label: string) => <Link to={SITUATION_MONITORING}>{label}</Link>
+        }]
+    }, {
+        label: "Reports",
+        submenu: [{
+            label: "Situation monitoring",
+            component: (label: string) => <Link to={REPORTS}>{label}</Link>
+        }]
+    },
     ]
     const createMenuItemStyles = (): MenuItemStyles => ({
         root: {

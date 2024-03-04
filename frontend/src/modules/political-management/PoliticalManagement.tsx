@@ -3,9 +3,9 @@ import {Box, Button, ButtonGroup, MenuItem, Select, SelectChangeEvent, Stack, Ty
 import styled from "styled-components";
 import CustomModal from "../../components/modal/CustomModal";
 import AttentionIcon from "../../icons/AttentionIcon";
-import {ICountryRelationshipEvent, IPoliticalStatus} from "../../api/political_management/types";
+import {ICountryRelationshipEvent, IPoliticalStatus} from "../../api/political-management/types";
 import ListOfCountryRelationshipEvents from "./components/list-of-notifications/ListOfCountryRelationshipEvents";
-import {changeEventStatus, getStatusRoute} from "../../api/political_management";
+import {changeEventStatus, getStatusRoute} from "../../api/political-management";
 import {useControlStatuses} from "./components/hooks/useControlStatuses";
 import {BASE_URL} from "../../api/axios";
 

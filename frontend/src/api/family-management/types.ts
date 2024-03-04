@@ -85,3 +85,4 @@ export interface IBuildingType {
     id: number;
     typeName: string;
 }
+

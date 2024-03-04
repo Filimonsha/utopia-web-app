@@ -1,6 +1,6 @@
 import {Dispatch, FC, useEffect, useState} from 'react';
 import {DataGrid, GridColDef, GridRowSelectionModel} from "@mui/x-data-grid";
-import {ICountryRelationshipEvent, IEventGroup, IPoliticalStatus} from "../../../../api/political_management/types";
+import {ICountryRelationshipEvent, IEventGroup, IPoliticalStatus} from "../../../../api/political-management/types";
 import {usePrepareListOfCountryRelationshipEvents} from "./hooks/usePrepareListOfCountryRelationshipEvents";
 
 interface IListOfCountryRelationshipEventProps {
