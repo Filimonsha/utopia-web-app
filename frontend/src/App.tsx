@@ -3,7 +3,8 @@ import Root from "./routes/Root";
 import OrganizationOfWorkRoot from "./routes/OrganizationOfWorkRoot";
 import Layout from "./Layout";
 import "./index.css"
-import {FAMILY_ATTACHMENT, ROOT} from "./routes/const";
+import {FAMILY_ATTACHMENT, POLITICAL_MANAGEMENT, ROOT, SITUATION_MONITORING} from "./routes/const";
+import PoliticalManagementRoot from "./routes/PoliticalManagementRoot";
 
 const App = () => {
     const routes = [{
@@ -12,6 +13,9 @@ const App = () => {
     }, {
         path: FAMILY_ATTACHMENT,
         element: <OrganizationOfWorkRoot/>
+    },{
+        path: SITUATION_MONITORING,
+        element: <PoliticalManagementRoot/>
     }]
     return (
         <HashRouter>
